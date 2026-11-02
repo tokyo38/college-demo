@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uttara Management College | উত্তরা ম্যানেজমেন্ট কলেজ - অফিসিয়াল পোর্টাল</title>
+  <meta name="description" content="উত্তরা ম্যানেজমেন্ট কলেজ (স্থাপিত: ২০০৫) - কারিগরি ও ভোকেশনাল শিক্ষার আধুনিক কেন্দ্র। উত্তরা, ঢাকা। ডিজিটাল স্টুডেন্ট পোর্টাল ও অ্যাডমিন সিস্টেম।">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/images/umc_logo.svg">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="top-bar" aria-label="জরুরি যোগাযোগ ও নোটিশ">
+    <div class="container top-bar-content">
+      <div class="top-contacts">
+        <span class="top-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          হাউস-১৪, রোড-০৮, সেক্টর-০৬, উত্তরা, ঢাকা-১২৩০
+        </span>
+        <span class="top-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          ০১৯১৩৯-৫৮১৮১, ০১৯৩২-৯৪৮৯৫৮
+        </span>
+        <span class="top-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          umc137@gmail.com
+        </span>
+      </div>
+      <div class="top-actions">
+        <span class="badge-pill badge-pill-accent">ভর্তি চলছে ২০২৬</span>
+        <a href="student-portal.html" class="top-contact-item" style="color: #60a5fa; font-weight: 700;">
+          স্টুডেন্ট লগইন &rarr;
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Navigation -->
+  <nav class="navbar" id="mainNavbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-link">
+        <img src="assets/images/umc_logo.svg" alt="Uttara Management College Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1>Uttara Management College</h1>
+          <span>উত্তরা ম্যানেজমেন্ট কলেজ • ESTD: 2005</span>
+        </div>
+      </a>
+
+      <button class="mobile-nav-toggle" id="openDrawerBtn" aria-label="Toggle navigation">
+        &#9776;
+      </button>
+
+      <ul class="nav-links">
+        <li class="nav-item active"><a href="index.html">মূল পাতা</a></li>
+        <li class="nav-item"><a href="#courses">কোর্সসমূহ</a></li>
+        <li class="nav-item"><a href="#facilities">ল্যাব ও ক্যাম্পাস</a></li>
+        <li class="nav-item"><a href="#digital-system">ডিজিটাল ক্যাম্পাস</a></li>
+        <li class="nav-item"><a href="#notices">নোটিশ বোর্ড</a></li>
+      </ul>
+
+      <div class="nav-buttons">
+        <a href="student-portal.html" class="btn btn-secondary btn-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          শিক্ষার্থী পোর্টাল
+        </a>
+        <a href="admin-portal.html" class="btn btn-primary btn-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          অ্যাডমিন / বেতন খাতা
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Off-canvas Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="brand-link">
+        <img src="assets/images/umc_logo.svg" alt="UMC" style="width: 38px; height: 46px;">
+        <div class="brand-text">
+          <h4 style="font-size: 0.95rem; font-weight: 800; color: #0a1f44; line-height: 1.15;">UTTARA MANAGEMENT<br>COLLEGE</h4>
+          <span style="font-size: 0.68rem; color: #1d4ed8;">ESTD: 2005 • ঢাকা</span>
+        </div>
+      </div>
+      <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close menu">&times;</button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="drawer-section-title">মেন্যু নেভিগেশন</div>
+      <ul class="drawer-nav-list">
+        <li><a href="index.html" class="drawer-link active">🏠 মূল পাতা</a></li>
+        <li><a href="#courses" class="drawer-link">📚 কোর্স ও পাঠ্যক্রম</a></li>
+        <li><a href="#facilities" class="drawer-link">🔬 ল্যাব ও ক্যাম্পাস</a></li>
+        <li><a href="#digital-system" class="drawer-link">⚡ ডিজিটাল ক্যাম্পাস রূপান্তর</a></li>
+        <li><a href="#notices" class="drawer-link">📢 নোটিশ বোর্ড</a></li>
+      </ul>
+
+      <div class="drawer-section-title" style="margin-top: 1.5rem;">অনলাইন পোর্টাল লগইন</div>
+      <div class="drawer-portal-actions">
+        <a href="student-portal.html" class="btn btn-primary" style="width: 100%; justify-content: center; margin-bottom: 0.65rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          শিক্ষার্থী পোর্টাল ও স্মার্ট আইডি
+        </a>
+        <a href="admin-portal.html" class="btn btn-accent" style="width: 100%; justify-content: center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          অ্যাডমিন বেতন খাতা সিস্টেম
+        </a>
+      </div>
+
+      <div class="drawer-contact-box" style="margin-top: auto; padding-top: 1.5rem;">
+        <small style="display:block; color:#64748b; font-weight:700; margin-bottom: 0.25rem;">ক্যাম্পাস হেল্পলাইন</small>
+        <div style="font-size: 0.85rem; font-weight: 700; color: #0a1f44; margin-bottom: 0.2rem;">📞 ০১৯১৩৯-৫৮১৮১, ০১৯৩২-৯৪৮৯৫৮</div>
+        <div style="font-size: 0.75rem; color: #64748b;">📍 হাউস-১৪, রোড-০৮, সেক্টর-০৬, উত্তরা, ঢাকা</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="hero-overlay-shapes"></div>
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          বাংলাদেশ কারিগরি শিক্ষা বোর্ড অনুমোদিত • কোড: UMC-137
+        </div>
+        <h1 class="hero-title">
+          দক্ষতা ও কর্মমুখী শিক্ষার <span>আধুনিক স্মার্ট রূপান্তর</span>
+        </h1>
+        <p class="hero-desc">
+          ২০০৫ সাল থেকে রাজধানীর উত্তরায় বাস্তবভিত্তিক ও প্রযুক্তিগত শিক্ষার বিশ্বস্ত প্রতিষ্ঠান। সনাতন কাগজ-কলমের ব্যবস্থাপনাকে বিদায় জানিয়ে এখন সবকিছু এক ছাতার নিচে — ডিজিটাল স্টুডেন্ট আইডি, অনলাইন বেতন খাতা ও স্মার্ট একাডেমিক পোর্টাল।
+        </p>
+        <div class="hero-actions">
+          <a href="student-portal.html" class="btn btn-primary btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            স্টুডেন্ট ডেমো পোর্টাল
+          </a>
+          <a href="admin-portal.html" class="btn btn-accent btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+            অ্যাডমিন বেতন খাতা ডেমো
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Access Interactive Box -->
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <h3>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            স্মার্ট অনলাইন সার্ভিস পয়েন্ট
+          </h3>
+          <p>কলেজের শিক্ষার্থী, শিক্ষক ও অভিভাবকদের জন্য দ্রুত সেবা</p>
+        </div>
+
+        <div class="portal-quick-grid">
+          <a href="student-portal.html" class="portal-box">
+            <div class="portal-box-icon blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <span>স্টুডেন্ট আইডি ও প্রোফাইল</span>
+            <small>আইডি কার্ড, রেজাল্ট ও হাজিরা</small>
+          </a>
+
+          <a href="student-portal.html#fee-ledger" class="portal-box">
+            <div class="portal-box-icon green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+            </div>
+            <span>অনলাইন ফি ও বেতন</span>
+            <small>বিকাশ/নগদে তাৎক্ষণিক পরিশোধ</small>
+          </a>
+
+          <a href="admin-portal.html" class="portal-box">
+            <div class="portal-box-icon purple">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            </div>
+            <span>কলেজ বেতন খাতা</span>
+            <small>বকেয়া ও কালেকশন হিসাব</small>
+          </a>
+
+          <a href="#notices" class="portal-box">
+            <div class="portal-box-icon amber">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            </div>
+            <span>জরুরি নোটিশ</span>
+            <small>পরীক্ষা ও ক্লাস রুটিন</small>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Key Stats Strip -->
+  <section class="stats-bar">
+    <div class="container stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">২০০৫</div>
+        <div class="stat-label">প্রতিষ্ঠাকাল ও দীর্ঘ অভিজ্ঞতা</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">১,৪০০+</div>
+        <div class="stat-label">নিয়মিত শিক্ষার্থী ও ট্রেইনি</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">১০০%</div>
+        <div class="stat-label">বাস্তবমুখী ল্যাব ও প্র্যাকটিক্যাল ক্লাস</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">২৪/৭</div>
+        <div class="stat-label">ডিজিটাল পোর্টাল ও অনলাইন সেবা</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Digital Transformation Comparison: Manual vs Smart ERP -->
+  <section class="comparison-section" id="digital-system">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">আধুনিকীকরণ ও সুবিধা</span>
+        <h2 class="section-title">কেন আমাদের এই ডিজিটাল সলিউশন প্রয়োজন?</h2>
+        <p class="section-desc">
+          আগের সনাতন হস্তলিখিত খাতার ঝামেলা এড়িয়ে কীভাবে এই ওয়েব প্ল্যাটফর্ম কলেজের প্রতিটি স্তরে গতিশীলতা ও স্বচ্ছতা নিয়ে আসবে।
+        </p>
+      </div>
+
+      <div class="comparison-grid">
+        <!-- Legacy Card -->
+        <div class="comparison-card card-legacy">
+          <h4>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+            বর্তমান সনাতন পদ্ধতি (ম্যানুয়াল খাতা)
+          </h4>
+          <ul class="feature-list">
+            <li class="feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <span>হাতে লেখা রেজিস্টার খাতায় শিক্ষার্থীদের তথ্য সংরক্ষণ, যা হারিয়ে বা নষ্ট হয়ে যাওয়ার ঝুঁকি থাকে।</span>
+            </li>
+            <li class="feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <span>বেতন বা ফি আদায়ে প্রতিটি পাতা উল্টে বকেয়া হিসাব বের করতে দীর্ঘ সময় ও ভুলের সম্ভাবনা।</span>
+            </li>
+            <li class="feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <span>শিক্ষার্থীদের বেতন দিতে সশরীরে লাইনে দাঁড়িয়ে কাগুজে মানি রিসিট সংগ্রহ করতে হয়।</span>
+            </li>
+            <li class="feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <span>অভিভাবকদের কাছে মাসিক বকেয়া বা পরীক্ষার নোটিশ পৌঁছানোর সরাসরি ডিজিটাল মাধ্যম নেই।</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Smart Card -->
+        <div class="comparison-card card-smart">
+          <h4>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            উত্তরা ম্যানেজমেন্ট কলেজ ডিজিটাল সলিউশন
+          </h4>
+          <ul class="feature-list">
+            <li class="feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>১-ক্লিকে শিক্ষার্থী প্রোফাইল:</strong> রোল নম্বর দিলেই শিক্ষার্থীর রক্তের গ্রুপ, সেশন, ছবি ও সম্পূর্ণ রেকর্ড মুহূর্তেই উন্মোচিত।</span>
+            </li>
+            <li class="feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>ডিজিটাল বেতন খাতা:</strong> কোন ছাত্রের কত টাকা বকেয়া আছে, আজ মোট কত টাকা আদায় হলো — লাইভ অটোমেটিক রিপোর্ট।</span>
+            </li>
+            <li class="feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>বিকাশ ও নগদে ফি পরিশোধ:</strong> ঘরে বসেই বেতন জমা দিয়ে ডিজিটাল সিলযুক্ত প্রিন্টযোগ্য রসিদ ডাউনলোড করার সুবিধা।</span>
+            </li>
+            <li class="feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span><strong>স্মার্ট ডিজিটাল আইডি কার্ড:</strong> কিউআর কোড ভেরিফিকেশন সহ আধুনিক স্টুডেন্ট কার্ড, যা সরাসরি মোবাইল স্ক্রিনেই থাকে।</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Academic Programs / Courses -->
+  <section class="programs-section" id="courses">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">পাঠ্যক্রম ও কোর্স</span>
+        <h2 class="section-title">আমাদের কারিগরি ও ভোকেশনাল প্রোগ্রামসমূহ</h2>
+        <p class="section-desc">
+          বাংলাদেশ কারিগরি শিক্ষা বোর্ডের অধীনে কর্মসংস্থানমুখী ও আন্তর্জাতিক মানসম্মত ব্যবহারিক শিক্ষা কোর্স।
+        </p>
+      </div>
+
+      <div class="programs-grid">
+        <div class="program-card">
+          <span class="program-badge">বিটিইবি কোড: SSC-VOC</span>
+          <h3>এসএসসি (ভোকেশনাল) - কম্পিউটার ও আইটি</h3>
+          <p>কম্পিউটার অপারেটিং, নেটওয়ার্কিং, প্রোগ্রামিং ফান্ডামেন্টাল এবং অফিস অ্যাপ্লিকেশনের সমন্বয়ে ২ বছর মেয়াদী সার্টিফিকেট কোর্স।</p>
+          <div class="program-meta">
+            <span>সেশন: ২০২৬</span>
+            <span>ল্যাব ভিত্তিক ক্লাস</span>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <span class="program-badge">বিটিইবি কোড: SSC-VOC</span>
+          <h3>এসএসসি (ভোকেশনাল) - ইলেকট্রিক্যাল ওয়ার্কস</h3>
+          <p>হাউস ওয়্যারিং, ইন্ডাস্ট্রিয়াল মোটর কন্ট্রোলিং, সার্কিট ডিজাইন ও বৈদ্যুতিক যন্ত্রপাতি মেরামতের বাস্তবমুখী প্রশিক্ষণ।</p>
+          <div class="program-meta">
+            <span>সেশন: ২০২৬</span>
+            <span>ওয়ার্কশপ সুবিধা</span>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <span class="program-badge">বিটিইবি কোড: HSC-BM</span>
+          <h3>এইচএসসি (বিজনেস ম্যানেজমেন্ট)</h3>
+          <p>কম্পিউটারাইজড অ্যাকাউন্টিং, সেক্রেটারিয়াল প্র্যাকটিস ও উদ্যোক্তা উন্নয়নের উচ্চ মাধ্যমিক ডিপ্লোমা সমমান কোর্স।</p>
+          <div class="program-meta">
+            <span>মেয়াদ: ২ বছর</span>
+            <span>উচ্চশিক্ষার সুযোগ</span>
+          </div>
+        </div>
+
+        <div class="program-card">
+          <span class="program-badge">পেশাগত শর্ট কোর্স</span>
+          <h3>প্রফেশনাল সফটওয়্যার ও ম্যানেজমেন্ট</h3>
+          <p>গ্রাফিক ডিজাইন, অটোমোবাইল প্রযুক্তি এবং ডিজিটাল মার্কেটিং বিষয়ক ৩ থেকে ৬ মাস মেয়াদী বিশেষ কর্মসংস্থান কোর্স।</p>
+          <div class="program-meta">
+            <span>ক্যাম্পাস ট্রেইনিং</span>
+            <span>জব প্লেসমেন্ট সহায়তা</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facilities & Lab Showcase -->
+  <section class="facilities-section" id="facilities">
+    <div class="container facilities-grid">
+      <div class="facility-img-wrap">
+        <img src="assets/images/computer_lab.jpg" alt="Uttara Management College Computer Lab">
+        <div class="facility-floating-badge">
+          <strong>আধুনিক হাই-স্পিড কম্পিউটার ল্যাব</strong>
+          <span>প্রতি শিক্ষার্থীর জন্য আলাদা ডেডিকেটেড ওয়ার্কস্টেশন</span>
+        </div>
+      </div>
+      <div>
+        <span class="section-tag">ক্যাম্পাস অবকাঠামো</span>
+        <h2 class="section-title">উন্নত প্রযুক্তি ও ব্যবহারিক শিক্ষার সুপরিসর ল্যাব</h2>
+        <p class="section-desc" style="margin-bottom: 1.5rem;">
+          উত্তরা ম্যানেজমেন্ট কলেজে থিওরিটিক্যাল ক্লাসের চেয়ে ল্যাব ও হ্যান্ডস-অন প্র্যাকটিসকে সর্বোচ্চ প্রাধান্য দেওয়া হয়। আধুনিক কোর আই সেভেন কম্পিউটার, মাল্টিমিডিয়া প্রজেক্টর ও উচ্চগতির ব্রডব্যান্ড নেটওয়ার্ক শিক্ষার্থীদের প্রযুক্তি বিশ্বে এগিয়ে রাখে।
+        </p>
+        <ul class="feature-list" style="margin-bottom: 2rem;">
+          <li class="feature-item" style="color: #334155;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            <span>দৈনিক ৪ ঘণ্টা ব্যবহারিক প্র্যাকটিক্যাল ল্যাব সেশন</span>
+          </li>
+          <li class="feature-item" style="color: #334155;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>অভিজ্ঞ ও বিটিইবি সার্টিফাইড বিশেষজ্ঞ শিক্ষক মণ্ডলী</span>
+          </li>
+          <li class="feature-item" style="color: #334155;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            <span>ডিজিটাল বায়োমেট্রিক ও কিউআর কোড স্মার্ট হাজিরা সিস্টেম</span>
+          </li>
+        </ul>
+        <a href="student-portal.html" class="btn btn-primary">
+          শিক্ষার্থী পোর্টাল ঘুরে দেখুন &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notice Board -->
+  <section class="notices-section" id="notices">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">নোটিশ ও বিজ্ঞপ্তি</span>
+        <h2 class="section-title">কলেজের সাম্প্রতিক নোটিশ বোর্ড</h2>
+        <p class="section-desc">সকল পরীক্ষার সময়সূচী, ক্লাস রুটিন ও প্রশাসনিক নির্দেশনা একনজরে দেখে নিন।</p>
+      </div>
+
+      <div class="notice-list">
+        <div class="notice-item">
+          <div class="notice-date">
+            <div class="day">০৫</div>
+            <div class="month">নভে ২০২৬</div>
+          </div>
+          <div class="notice-content">
+            <h4>এসএসসি (ভোকেশনাল) ২০২৬ সেশনের ১ম সেমিস্টার পরীক্ষার ফি জমাদান সংক্রান্ত বিজ্ঞপ্তি</h4>
+            <p>সকল শিক্ষার্থীকে আগামী ১৫ নভেম্বরের মধ্যে কলেজের অনলাইন স্টুডেন্ট পোর্টালের মাধ্যমে অথবা সরাসরি ফি পরিশোধের অনুরোধ করা হলো।</p>
+          </div>
+          <a href="student-portal.html#fee-ledger" class="btn btn-outline-primary btn-sm">ফি পরিশোধ</a>
+        </div>
+
+        <div class="notice-item">
+          <div class="notice-date">
+            <div class="day">০১</div>
+            <div class="month">নভে ২০২৬</div>
+          </div>
+          <div class="notice-content">
+            <h4>নতুন ডিজিটাল স্মার্ট আইডি কার্ড বিতরণ ও কিউআর কোড এক্টিভেশন</h4>
+            <p>কলেজের সকল নিয়মিত ছাত্র-ছাত্রীদের ডিজিটাল প্রোফাইল ভেরিফিকেশনের জন্য স্টুডেন্ট পোর্টালে লগইন করার নির্দেশ দেওয়া হচ্ছে।</p>
+          </div>
+          <a href="student-portal.html" class="btn btn-secondary btn-sm">আইডি দেখুন</a>
+        </div>
+
+        <div class="notice-item">
+          <div class="notice-date">
+            <div class="day">২৮</div>
+            <div class="month">অক্টো ২০২৬</div>
+          </div>
+          <div class="notice-content">
+            <h4>কারিগরি প্র্যাকটিক্যাল ল্যাব ক্লাস ও সেমিনার শিডিউল প্রকাশ</h4>
+            <p>কম্পিউটার ও ইলেকট্রিক্যাল বিভাগের নতুন ব্যবহারিক ওয়ার্কশপ ক্লাস আগামী রবিবার থেকে নিয়মিত সময়সূচী অনুযায়ী শুরু হবে।</p>
+          </div>
+          <span class="badge-pill" style="background:#f1f5f9; color:#475569;">ডাউনলোড রুটিন</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex; align-items:center; gap: 0.75rem;">
+            <img src="assets/images/umc_logo.svg" alt="UMC Logo" style="width: 44px; height: 52px;">
+            <div style="color: #fff; font-weight: 800; font-size: 1.1rem; line-height: 1.2;">
+              UTTARA MANAGEMENT<br>COLLEGE
+            </div>
+          </div>
+          <p style="margin-top: 1rem;">
+            উত্তরা ম্যানেজমেন্ট কলেজ (স্থাপিত: ২০০৫)। বাংলাদেশ কারিগরি শিক্ষা বোর্ডের অধিভুক্ত উত্তরা অঞ্চলের অন্যতম শীর্ষস্থানীয় শিক্ষা প্রতিষ্ঠান।
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>কুইক লিংক</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">মূল পাতা</a></li>
+            <li><a href="student-portal.html">শিক্ষার্থী পোর্টাল ডেমো</a></li>
+            <li><a href="admin-portal.html">অ্যাডমিন বেতন খাতা ডেমো</a></li>
+            <li><a href="#courses">কোর্স ও ভর্তি</a></li>
+            <li><a href="#notices">নোটিশ বোর্ড</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>কোর্সসমূহ</h4>
+          <ul class="footer-links">
+            <li><a href="#courses">এসএসসি (ভোকেশনাল) কম্পিউটার</a></li>
+            <li><a href="#courses">এসএসসি (ভোকেশনাল) ইলেকট্রিক্যাল</a></li>
+            <li><a href="#courses">এইচএসসি (বিজনেস ম্যানেজমেন্ট)</a></li>
+            <li><a href="#courses">ডিপ্লোমা ইন ইঞ্জিনিয়ারিং</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>যোগাযোগের ঠিকানা</h4>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>House-14, Road #08, Sector #06, Uttara, Dhaka-1230</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>০১৯১৩৯-৫৮১৮১, ০১৯৩২-৯৪৮৯৫৮, ০১৯১৩-৯৩৭৮৮৮</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>umc137@gmail.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; ২০০৫ - ২০২৬ উত্তরা ম্যানেজমেন্ট কলেজ (Uttara Management College)। সর্বস্বত্ব সংরক্ষিত।</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

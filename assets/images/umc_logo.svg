@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2005/svg" viewBox="0 0 200 240" width="100%" height="100%">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#b91c1c" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#eab308" />
+      <stop offset="100%" stop-color="#ca8a04" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Shield Border -->
+  <path d="M100 15 
+           C145 15, 185 28, 185 55 
+           C185 130, 155 190, 100 225 
+           C45 190, 15 130, 15 55 
+           C15 28, 55 15, 100 15 Z" 
+        fill="url(#shieldGrad)" 
+        stroke="url(#goldGrad)" 
+        stroke-width="5" 
+        filter="url(#shadow)"/>
+
+  <!-- Inner Inset Shield -->
+  <path d="M100 25 
+           C138 25, 172 37, 172 60 
+           C172 125, 145 178, 100 210 
+           C55 178, 28 125, 28 60 
+           C28 37, 62 25, 100 25 Z" 
+        fill="#ffffff" 
+        stroke="#1e3a8a" 
+        stroke-width="2"/>
+
+  <!-- Top Red Section / Arch -->
+  <path d="M34 60 
+           C34 40, 65 30, 100 30 
+           C135 30, 166 40, 166 60 
+           L166 100 
+           L34 100 Z" 
+        fill="url(#redGrad)"/>
+
+  <!-- Stylized Monogram UMC in top section -->
+  <g fill="#ffffff" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-weight="900" text-anchor="middle">
+    <!-- Big Bold 'U' -->
+    <path d="M65 42 L77 42 L77 72 C77 82, 85 86, 92 86 C99 86, 107 82, 107 72 L107 42 L119 42 L119 72 C119 91, 106 97, 92 97 C78 97, 65 91, 65 72 Z" fill="#ffffff" opacity="0.95"/>
+    <!-- Central Torch / Book symbol -->
+    <path d="M92 48 L87 64 L97 64 Z" fill="url(#goldGrad)"/>
+    <circle cx="92" cy="42" r="4" fill="url(#goldGrad)"/>
+  </g>
+
+  <!-- Central Blue Ribbon Banner -->
+  <g filter="url(#shadow)">
+    <!-- Ribbon ends -->
+    <path d="M5 110 L25 98 L25 125 Z" fill="#1e3a8a"/>
+    <path d="M195 110 L175 98 L175 125 Z" fill="#1e3a8a"/>
+    
+    <!-- Main Banner Body -->
+    <path d="M15 100 L185 100 L178 126 L22 126 Z" fill="#1d4ed8" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="100" y="118" 
+          fill="#ffffff" 
+          font-family="'Plus Jakarta Sans', Arial, sans-serif" 
+          font-size="11" 
+          font-weight="800" 
+          letter-spacing="1.5" 
+          text-anchor="middle">MANAGEMENT COLLEGE</text>
+  </g>
+
+  <!-- Lower Emblems: Open Book & Technical Gear -->
+  <g transform="translate(100, 155)">
+    <!-- Open Book -->
+    <path d="M-28 0 C-15 -6, 0 -3, 0 8 C0 -3, 15 -6, 28 0 L24 20 C12 14, 0 17, 0 25 C0 17, -12 14, -24 20 Z" fill="#1e3a8a" opacity="0.15"/>
+    <path d="M-25 2 C-13 -4, 0 -1, 0 10 L0 25 C0 16, -13 13, -25 19 Z" fill="#1e3a8a"/>
+    <path d="M25 2 C13 -4, 0 -1, 0 10 L0 25 C0 16, 13 13, 25 19 Z" fill="#2563eb"/>
+    <!-- Technical Cogwheel / Vocational Education Icon -->
+    <circle cx="0" cy="-6" r="6" fill="url(#goldGrad)"/>
+    <circle cx="0" cy="-6" r="2.5" fill="#ffffff"/>
+  </g>
+
+  <!-- Lower Curved Banner: ESTD: 2005 -->
+  <g>
+    <path d="M50 185 Q100 205 150 185 L147 197 Q100 217 53 197 Z" fill="#1e3a8a"/>
+    <text x="100" y="197" 
+          fill="#fbbf24" 
+          font-family="'Plus Jakarta Sans', Arial, sans-serif" 
+          font-size="9" 
+          font-weight="800" 
+          letter-spacing="2" 
+          text-anchor="middle">ESTD: 2005</text>
+  </g>
+</svg>

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>কলেজ অ্যাডমিন ও ডিজিটাল বেতন খাতা | Uttara Management College ERP</title>
+  <meta name="description" content="উত্তরা ম্যানেজমেন্ট কলেজ অ্যাডমিনিস্ট্রেশন ও ডিজিটাল বেতন খাতা সিস্টেম। শিক্ষার্থী রেজিস্টার, ফি কালেকশন ও হিসাব নিকাশ।">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/images/umc_logo.svg">
+  <style>
+    .admin-chart-bar {
+      display: flex;
+      align-items: flex-end;
+      gap: 1.5rem;
+      height: 160px;
+      padding-top: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .chart-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      height: 100%;
+      justify-content: flex-end;
+    }
+    .chart-fill {
+      width: 100%;
+      max-width: 44px;
+      border-radius: 6px 6px 0 0;
+      transition: height 0.6s ease;
+      position: relative;
+    }
+    .chart-fill:hover::before {
+      content: attr(data-val);
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f172a;
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .chart-fill.blue { background: linear-gradient(180deg, #3b82f6, #1d4ed8); }
+    .chart-fill.green { background: linear-gradient(180deg, #10b981, #059669); }
+    .chart-fill.amber { background: linear-gradient(180deg, #f59e0b, #d97706); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <aside class="top-bar" aria-label="অ্যাডমিন কন্ট্রোল">
+    <div class="container top-bar-content">
+      <div class="top-contacts">
+        <span class="top-contact-item">
+          <strong>UTTARA MANAGEMENT COLLEGE</strong> &bull; সেন্ট্রাল অ্যাডমিনিস্ট্রেশন ERP পোর্টাল
+        </span>
+        <span class="top-contact-item">
+          ক্যাম্পাস: সেক্টর-০৬, উত্তরা, ঢাকা
+        </span>
+      </div>
+      <div class="top-actions">
+        <span style="color:#cbd5e1; font-size:0.8rem;">লগইন আছেন: <strong>হিসাব ও পরীক্ষা নিয়ন্ত্রক</strong></span>
+        <a href="index.html" class="top-contact-item" style="color:#f87171;">লগআউট &rarr;</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-link">
+        <img src="assets/images/umc_logo.svg" alt="UMC Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1>Uttara Management College</h1>
+          <span>ডিজিটাল প্রশাসন ও বেতন খাতা সিস্টেম (ERP)</span>
+        </div>
+      </a>
+
+      <button class="mobile-nav-toggle" id="openDrawerBtn" aria-label="Toggle navigation">
+        &#9776;
+      </button>
+
+      <div class="nav-buttons">
+        <a href="student-portal.html" class="btn btn-secondary btn-sm">
+          শিক্ষার্থী ভিউ ডেমো
+        </a>
+        <button class="btn btn-primary btn-sm" id="btnOpenNewStudentModal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          নতুন শিক্ষার্থী ভর্তি এন্ট্রি
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Off-canvas Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="brand-link">
+        <img src="assets/images/umc_logo.svg" alt="UMC" style="width: 38px; height: 46px;">
+        <div class="brand-text">
+          <h4 style="font-size: 0.95rem; font-weight: 800; color: #0a1f44; line-height: 1.15;">UTTARA MANAGEMENT<br>COLLEGE</h4>
+          <span style="font-size: 0.68rem; color: #1d4ed8;">অ্যাডমিন ERP কন্ট্রোল</span>
+        </div>
+      </div>
+      <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close menu">&times;</button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="portal-user-brief" style="margin-bottom: 1.25rem;">
+        <div style="width:40px; height:40px; border-radius:50%; background:#1e3a8a; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:0.95rem;">
+          UMC
+        </div>
+        <div class="portal-user-info">
+          <h4>প্রশাসনিক কন্ট্রোল</h4>
+          <span>উত্তরা ক্যাম্পাস অথরিটি</span>
+        </div>
+      </div>
+
+      <div class="drawer-section-title">ইআরপি নেভিগেশন</div>
+      <ul class="drawer-nav-list">
+        <li><a href="#admin-overview" class="drawer-link active">📊 ড্যাশবোর্ড ও কালেকশন</a></li>
+        <li><a href="#student-ledger-table" class="drawer-link">💳 লাইভ বেতন খাতা</a></li>
+        <li><a href="#revenue-reports" class="drawer-link">📈 মাসিক আদায় চার্ট</a></li>
+        <li><a href="#sms-alerts" class="drawer-link">📩 এসএমএস ব্রডকাস্ট</a></li>
+        <li><a href="student-portal.html" class="drawer-link">👨‍🎓 শিক্ষার্থী পোর্টাল ভিউ</a></li>
+        <li><a href="index.html" class="drawer-link">🏠 মূল কলেজ ওয়েবসাইট</a></li>
+      </ul>
+
+      <div style="margin-top: auto; padding-top: 1rem;">
+        <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="document.getElementById('mobileDrawer').classList.remove('active'); document.getElementById('mobileDrawerOverlay').classList.remove('active'); document.body.style.overflow=''; document.getElementById('btnOpenNewStudentModal').click();">
+          + নতুন শিক্ষার্থী ভর্তি এন্ট্রি
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portal Workspace -->
+  <main class="portal-wrapper">
+    <!-- Sidebar Navigation -->
+    <aside class="portal-sidebar" aria-label="Admin Navigation">
+      <div class="portal-user-brief">
+        <div style="width:48px; height:48px; border-radius:50%; background:#1e3a8a; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:1.1rem;">
+          UMC
+        </div>
+        <div class="portal-user-info">
+          <h4>প্রশাসনিক প্যানেল</h4>
+          <span>উত্তরা ক্যাম্পাস অথরিটি</span>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li>
+          <a href="#admin-overview" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            ড্যাশবোর্ড ও কালেকশন
+          </a>
+        </li>
+        <li>
+          <a href="#student-ledger-table" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            ডিজিটাল বেতন খাতা (Ledger)
+          </a>
+        </li>
+        <li>
+          <a href="#student-database" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            শিক্ষার্থী ডেটাবেজ
+          </a>
+        </li>
+        <li>
+          <a href="#revenue-reports" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            আয়-ব্যয় ও মাসিক রিপোর্ট
+          </a>
+        </li>
+        <li>
+          <a href="#sms-alerts" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            এসএমএস ও নোটিশ ব্রডকাস্ট
+          </a>
+        </li>
+      </ul>
+
+      <div style="margin-top:auto; padding: 1.25rem 1rem; background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+        <span style="font-size:0.75rem; color:#64748b; font-weight:700; text-transform:uppercase;">সিস্টেম স্ট্যাটাস</span>
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-top:0.35rem; font-size:0.85rem; font-weight:700; color:#10b981;">
+          <span style="width:10px; height:10px; border-radius:50%; background:#10b981; display:inline-block;"></span>
+          ক্লাউড সার্ভার সচল
+        </div>
+        <p style="font-size:0.75rem; color:#94a3b8; margin-top:0.35rem;">সর্বশেষ সিঙ্ক: আজ রাত ১০:৫০</p>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="portal-content">
+      
+      <!-- Page Title & Actions -->
+      <div class="portal-header">
+        <div class="portal-header-title">
+          <h2>কলেজ প্রশাসন ও বেতন রেজিস্টার ওভারভিউ</h2>
+          <p>সনাতন কাগজ-কলমের খাতা বদলে আধুনিক সেন্ট্রালাইজড অ্যাকাউন্টিং ও শিক্ষার্থী ব্যবস্থাপনা।</p>
+        </div>
+        <div style="display:flex; gap: 0.75rem;">
+          <button class="btn btn-secondary btn-sm" onclick="window.print()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            রিপোর্ট প্রিন্ট
+          </button>
+          <button class="btn btn-success btn-sm" onclick="showToast('সকল বকেয়াদার শিক্ষার্থীদের মোবাইলে স্বয়ংক্রিয় এসএমএস পাঠানো হয়েছে!')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"></path><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            এক ক্লিকে সকল বকেয়া SMS পাঠান
+          </button>
+        </div>
+      </div>
+
+      <!-- Real-time KPI Stats Cards -->
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-info">
+            <h5>মোট শিক্ষার্থী সংখ্যা</h5>
+            <div class="value">১,৪২০</div>
+            <small style="color: #10b981;">↑ সেশন ২০২৬-এ নতুন ভর্তি ২৮০ জন</small>
+          </div>
+          <div class="metric-icon-wrap" style="background:#eff6ff; color:#1d4ed8;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-info">
+            <h5>আজকের সংগৃহীত বেতন</h5>
+            <div class="value" id="adminStatCollected" style="color: #10b981;">৳ ৪৮,৫০০</div>
+            <small style="color: #10b981;">১৯ জন শিক্ষার্থীর ফি জমা হয়েছে</small>
+          </div>
+          <div class="metric-icon-wrap" style="background:#ecfdf5; color:#10b981;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-info">
+            <h5>মোট বকেয়া বেতন (চলতি মাস)</h5>
+            <div class="value" id="adminStatDue" style="color: #ef4444;">৳ ১,৮৫,০০০</div>
+            <small style="color: #ef4444;">৭৪ জন শিক্ষার্থীর বেতন পেন্ডিং</small>
+          </div>
+          <div class="metric-icon-wrap" style="background:#fef2f2; color:#ef4444;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-info">
+            <h5>আজকের উপস্থিতি হার</h5>
+            <div class="value" style="color: #0284c7;">৯৪.২%</div>
+            <small style="color: #0284c7;">মোট উপস্থিত ১,৩৩৮ জন</small>
+          </div>
+          <div class="metric-icon-wrap" style="background:#f0f9ff; color:#0284c7;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Ledger & Student Management Section -->
+      <div class="ledger-card" id="student-ledger-table">
+        <div class="ledger-header">
+          <div>
+            <h3>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              শিক্ষার্থীদের লাইভ বেতন খাতা ও ডিজিটাল রেজিস্টার
+            </h3>
+            <p style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.2rem;">
+              কাগজে খোঁজাখুঁজি ছাড়াই নাম, রোল বা মোবাইল দিয়ে মুহূর্তেই বকেয়া চেক ও বেতন গ্রহণ করুন।
+            </p>
+          </div>
+
+          <div style="display:flex; gap: 0.5rem;">
+            <button class="btn btn-outline-primary btn-sm" onclick="document.getElementById('adminStudentSearch').value=''; document.getElementById('adminDeptFilter').value='all'; document.getElementById('adminStatusFilter').value='all'; location.reload();">
+              রিসেট ফিল্টার
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="filter-bar">
+          <div class="search-input-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="adminStudentSearch" placeholder="শিক্ষার্থীর নাম, রোল (যেমন: 2630) বা মোবাইল দিয়ে খুঁজুন...">
+          </div>
+
+          <select class="select-filter" id="adminDeptFilter">
+            <option value="all">সকল বিভাগ / কোর্স</option>
+            <option value="SSC-VOC">এসএসসি (ভোকেশনাল)</option>
+            <option value="HSC-BM">এইচএসসি (বিজনেস ম্যানেজমেন্ট)</option>
+            <option value="DIPLOMA">ডিপ্লোমা ইন ইঞ্জিনিয়ারিং</option>
+          </select>
+
+          <select class="select-filter" id="adminStatusFilter">
+            <option value="all">সকল পেমেন্ট স্ট্যাটাস</option>
+            <option value="due">বকেয়া (Due)</option>
+            <option value="paid">পরিশোধিত (Paid)</option>
+          </select>
+        </div>
+
+        <!-- Dynamic Live Table -->
+        <div class="table-responsive">
+          <table class="table table-mobile-card">
+            <thead>
+              <tr>
+                <th>রোল</th>
+                <th>শিক্ষার্থীর নাম</th>
+                <th>কোর্স / ট্রেড</th>
+                <th>সেশন</th>
+                <th>মোবাইল নম্বর</th>
+                <th>বকেয়া অংক</th>
+                <th>স্ট্যাটাস</th>
+                <th style="text-align: right;">প্রশাসনিক অ্যাকশন</th>
+              </tr>
+            </thead>
+            <tbody id="adminStudentTableBody">
+              
+              <!-- Student 1: Md Tayb Sikdar (from the user's provided card) -->
+              <tr data-roll="2630" data-name="MD TAYB SIKDAR মোঃ তাইব শিকদার" data-phone="01880882700" data-dept="SSC-VOC" data-status="due" style="background:#fffafa;">
+                <td data-label="রোল">
+                  <span class="badge-pill" style="background:#eff6ff; color:#1d4ed8; font-weight:800;">২৬৩০</span>
+                </td>
+                <td data-label="শিক্ষার্থীর নাম">
+                  <strong>MD TAYB SIKDAR</strong>
+                  <div style="font-size:0.75rem; color:#dc2626; font-weight:700;">রক্তের গ্রুপ: B+</div>
+                </td>
+                <td data-label="কোর্স / ট্রেড">
+                  <span class="badge-pill" style="background:#f1f5f9; color:#0f172a;">SSC (VOC)</span>
+                </td>
+                <td data-label="সেশন">২০২৬</td>
+                <td data-label="মোবাইল">
+                  <span style="font-family:monospace; font-weight:600;">01880882700</span>
+                </td>
+                <td data-label="বকেয়া অংক" class="due-amount-col">
+                  <strong style="color:#ef4444;">৳ ২,৫০০</strong>
+                </td>
+                <td data-label="স্ট্যাটাস" class="status-col">
+                  <span class="status-badge status-due">বকেয়া (Due)</span>
+                </td>
+                <td data-label="অ্যাকশন" class="action-col" style="text-align: right;">
+                  <button class="btn btn-sm btn-success" onclick="collectFeeAdmin('2630', 'MD TAYB SIKDAR', '৳ ২,৫০০')">
+                    বেতন গ্রহণ
+                  </button>
+                  <button class="btn btn-sm btn-secondary" onclick="sendSmsReminder('2630', 'MD TAYB SIKDAR', '01880882700')">
+                    SMS পাঠান
+                  </button>
+                </td>
+              </tr>
+
+              <!-- Student 2 -->
+              <tr data-roll="2631" data-name="Fahim Hasan ফাহিম হাসান" data-phone="01711223344" data-dept="SSC-VOC" data-status="paid">
+                <td data-label="রোল">
+                  <span class="badge-pill" style="background:#eff6ff; color:#1d4ed8; font-weight:800;">২৬৩১</span>
+                </td>
+                <td data-label="শিক্ষার্থীর নাম">
+                  <strong>ফাহিম হাসান</strong>
+                  <div style="font-size:0.75rem; color:var(--text-muted);">রক্তের গ্রুপ: O+</div>
+                </td>
+                <td data-label="কোর্স / ট্রেড">
+                  <span class="badge-pill" style="background:#f1f5f9; color:#0f172a;">SSC (VOC)</span>
+                </td>
+                <td data-label="সেশন">২০২৬</td>
+                <td data-label="মোবাইল">
+                  <span style="font-family:monospace; font-weight:600;">01711223344</span>
+                </td>
+                <td data-label="বকেয়া অংক" class="due-amount-col">
+                  <strong style="color:#10b981;">৳ ০.০০</strong>
+                </td>
+                <td data-label="স্ট্যাটাস" class="status-col">
+                  <span class="status-badge status-paid">পরিশোধিত</span>
+                </td>
+                <td data-label="অ্যাকশন" class="action-col" style="text-align: right;">
+                  <button class="btn btn-sm btn-secondary" onclick="viewReceipt('TRX-UMC-2631', 'নভেম্বর টিউশন ফি', '৳ ২,৫০০')">
+                    রসিদ প্রিন্ট
+                  </button>
+                </td>
+              </tr>
+
+              <!-- Student 3 -->
+              <tr data-roll="2632" data-name="Sadia Akhter সাদিয়া আক্তার" data-phone="01922334455" data-dept="SSC-VOC" data-status="due">
+                <td data-label="রোল">
+                  <span class="badge-pill" style="background:#eff6ff; color:#1d4ed8; font-weight:800;">২৬৩২</span>
+                </td>
+                <td data-label="শিক্ষার্থীর নাম">
+                  <strong>সাদিয়া আক্তার</strong>
+                  <div style="font-size:0.75rem; color:var(--text-muted);">রক্তের গ্রুপ: A+</div>
+                </td>
+                <td data-label="কোর্স / ট্রেড">
+                  <span class="badge-pill" style="background:#f1f5f9; color:#0f172a;">SSC (VOC)</span>
+                </td>
+                <td data-label="সেশন">২০২৬</td>
+                <td data-label="মোবাইল">
+                  <span style="font-family:monospace; font-weight:600;">01922334455</span>
+                </td>
+                <td data-label="বকেয়া অংক" class="due-amount-col">
+                  <strong style="color:#ef4444;">৳ ৫,০০০</strong>
+                </td>
+                <td data-label="স্ট্যাটাস" class="status-col">
+                  <span class="status-badge status-due">২ মাসের বকেয়া</span>
+                </td>
+                <td data-label="অ্যাকশন" class="action-col" style="text-align: right;">
+                  <button class="btn btn-sm btn-success" onclick="collectFeeAdmin('2632', 'সাদিয়া আক্তার', '৳ ৫,০০০')">
+                    বেতন গ্রহণ
+                  </button>
+                  <button class="btn btn-sm btn-secondary" onclick="sendSmsReminder('2632', 'সাদিয়া আক্তার', '01922334455')">
+                    SMS পাঠান
+                  </button>
+                </td>
+              </tr>
+
+              <!-- Student 4 -->
+              <tr data-roll="1420" data-name="Md Rafi Islam মোঃ রাফি ইসলাম" data-phone="01633445566" data-dept="HSC-BM" data-status="paid">
+                <td data-label="রোল">
+                  <span class="badge-pill" style="background:#eff6ff; color:#1d4ed8; font-weight:800;">১৪২০</span>
+                </td>
+                <td data-label="শিক্ষার্থীর নাম">
+                  <strong>মোঃ রাফি ইসলাম</strong>
+                  <div style="font-size:0.75rem; color:var(--text-muted);">রক্তের গ্রুপ: AB+</div>
+                </td>
+                <td data-label="কোর্স / ট্রেড">
+                  <span class="badge-pill" style="background:#fdf2f8; color:#9d174d;">HSC (BM)</span>
+                </td>
+                <td data-label="সেশন">২০২৫</td>
+                <td data-label="মোবাইল">
+                  <span style="font-family:monospace; font-weight:600;">01633445566</span>
+                </td>
+                <td data-label="বকেয়া অংক" class="due-amount-col">
+                  <strong style="color:#10b981;">৳ ০.০০</strong>
+                </td>
+                <td data-label="স্ট্যাটাস" class="status-col">
+                  <span class="status-badge status-paid">পরিশোধিত</span>
+                </td>
+                <td data-label="অ্যাকশন" class="action-col" style="text-align: right;">
+                  <button class="btn btn-sm btn-secondary" onclick="viewReceipt('TRX-UMC-1420', 'সেমিস্টার ফি', '৳ ৩,০০০')">
+                    রসিদ প্রিন্ট
+                  </button>
+                </td>
+              </tr>
+
+              <!-- Student 5 -->
+              <tr data-roll="1425" data-name="Tanjila Jahan তানজিলা জাহান" data-phone="01844556677" data-dept="HSC-BM" data-status="due">
+                <td data-label="রোল">
+                  <span class="badge-pill" style="background:#eff6ff; color:#1d4ed8; font-weight:800;">১৪২৫</span>
+                </td>
+                <td data-label="শিক্ষার্থীর নাম">
+                  <strong>তানজিলা জাহান</strong>
+                  <div style="font-size:0.75rem; color:var(--text-muted);">রক্তের গ্রুপ: B+</div>
+                </td>
+                <td data-label="কোর্স / ট্রেড">
+                  <span class="badge-pill" style="background:#fdf2f8; color:#9d174d;">HSC (BM)</span>
+                </td>
+                <td data-label="সেশন">২০২৫</td>
+                <td data-label="মোবাইল">
+                  <span style="font-family:monospace; font-weight:600;">01844556677</span>
+                </td>
+                <td data-label="বকেয়া অংক" class="due-amount-col">
+                  <strong style="color:#ef4444;">৳ ২,৫০০</strong>
+                </td>
+                <td data-label="স্ট্যাটাস" class="status-col">
+                  <span class="status-badge status-due">বকেয়া (Due)</span>
+                </td>
+                <td data-label="অ্যাকশন" class="action-col" style="text-align: right;">
+                  <button class="btn btn-sm btn-success" onclick="collectFeeAdmin('1425', 'তানজিলা জাহান', '৳ ২,৫০০')">
+                    বেতন গ্রহণ
+                  </button>
+                  <button class="btn btn-sm btn-secondary" onclick="sendSmsReminder('1425', 'তানজিলা জাহান', '01844556677')">
+                    SMS পাঠান
+                  </button>
+                </td>
+              </tr>
+
+              <!-- Student 6 -->
+              <tr data-roll="5012" data-name="Shamim Reza শামীম রেজা" data-phone="01555667788" data-dept="DIPLOMA" data-status="due">
+                <td data-label="রোল">
+                  <span class="badge-pill" style="background:#eff6ff; color:#1d4ed8; font-weight:800;">৫০১২</span>
+                </td>
+                <td data-label="শিক্ষার্থীর নাম">
+                  <strong>শামীম রেজা</strong>
+                  <div style="font-size:0.75rem; color:var(--text-muted);">কম্পিউটার টেকনোলজি</div>
+                </td>
+                <td data-label="কোর্স / ট্রেড">
+                  <span class="badge-pill" style="background:#ecfdf5; color:#065f46;">ডিপ্লোমা</span>
+                </td>
+                <td data-label="সেশন">২০২৪</td>
+                <td data-label="মোবাইল">
+                  <span style="font-family:monospace; font-weight:600;">01555667788</span>
+                </td>
+                <td data-label="বকেয়া অংক" class="due-amount-col">
+                  <strong style="color:#ef4444;">৳ ৪,০০০</strong>
+                </td>
+                <td data-label="স্ট্যাটাস" class="status-col">
+                  <span class="status-badge status-due">ল্যাব ফি বকেয়া</span>
+                </td>
+                <td data-label="অ্যাকশন" class="action-col" style="text-align: right;">
+                  <button class="btn btn-sm btn-success" onclick="collectFeeAdmin('5012', 'শামীম রেজা', '৳ ৪,০০০')">
+                    বেতন গ্রহণ
+                  </button>
+                  <button class="btn btn-sm btn-secondary" onclick="sendSmsReminder('5012', 'শামীম রেজা', '01555667788')">
+                    SMS পাঠান
+                  </button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Financial Visual Analytics & Monthly Trends -->
+      <div style="display:grid; grid-template-columns: 1.25fr 0.75fr; gap: 2rem;">
+        
+        <!-- Monthly Collections Bar Chart -->
+        <div class="ledger-card" id="revenue-reports">
+          <div class="ledger-header">
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              মাসিক বেতন আদায় চিত্র (২০২৬)
+            </h3>
+            <span class="badge-pill" style="background:#ecfdf5; color:#10b981;">+১৮.৪% প্রবৃদ্ধি</span>
+          </div>
+
+          <div class="admin-chart-bar">
+            <div class="chart-col">
+              <div class="chart-fill blue" style="height: 60%;" data-val="৳ ৩,২০,০০০"></div>
+              <span style="font-size:0.75rem; color:#64748b;">জুলাই</span>
+            </div>
+            <div class="chart-col">
+              <div class="chart-fill blue" style="height: 75%;" data-val="৳ ৩,৮৫,০০০"></div>
+              <span style="font-size:0.75rem; color:#64748b;">আগস্ট</span>
+            </div>
+            <div class="chart-col">
+              <div class="chart-fill amber" style="height: 90%;" data-val="৳ ৪,৬০,০০০"></div>
+              <span style="font-size:0.75rem; color:#64748b;">সেপ্টেম্বর</span>
+            </div>
+            <div class="chart-col">
+              <div class="chart-fill blue" style="height: 82%;" data-val="৳ ৪,১৫,০০০"></div>
+              <span style="font-size:0.75rem; color:#64748b;">অক্টোবর</span>
+            </div>
+            <div class="chart-col">
+              <div class="chart-fill green" style="height: 95%;" data-val="৳ ৪,৮৫,০০০"></div>
+              <span style="font-size:0.75rem; font-weight:800; color:#10b981;">নভেম্বর</span>
+            </div>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-top: 1rem; font-size:0.8rem; color:var(--text-muted);">
+            <span>সর্বমোট আদায়: <strong>৳ ২০,৬৫,০০০</strong></span>
+            <span>অনাদায়ী বকেয়া: <strong style="color:#ef4444;">৳ ১,৮৫,০০০</strong></span>
+          </div>
+        </div>
+
+        <!-- Quick SMS Broadcast Widget -->
+        <div class="ledger-card" id="sms-alerts">
+          <div class="ledger-header">
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              নোটিশ ও জরুরি SMS
+            </h3>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+            এক ক্লিকে সকল শিক্ষার্থী অথবা নির্দিষ্ট ব্যাচের কাছে বার্তা পাঠান।
+          </p>
+
+          <div style="margin-bottom: 0.75rem;">
+            <label style="font-size: 0.75rem; font-weight:700; color:#475569;">গ্রাহক গ্রুপ</label>
+            <select class="select-filter" style="width: 100%; margin-top: 0.25rem;">
+              <option>সকল বকেয়া শিক্ষার্থী (৭৪ জন)</option>
+              <option>এসএসসি ভোকেশনাল (২০২৬ ব্যাচ)</option>
+              <option>এইচএসসি বিএম (২০২৫ ব্যাচ)</option>
+              <option>কলেজের সকল শিক্ষক ও স্টাফ</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <label style="font-size: 0.75rem; font-weight:700; color:#475569;">বার্তার টেক্সট</label>
+            <textarea style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-size: 0.825rem; height: 75px; resize: none;">সম্মানিত অভিভাবক, উত্তরা ম্যানেজমেন্ট কলেজে আপনার সন্তানের নভেম্বর ২০২৬ মাসের টিউশন ফি বকেয়া রয়েছে। অনুগ্রহ করে দ্রুত পরিশোধ করুন। - অধ্যক্ষ</textarea>
+          </div>
+
+          <button class="btn btn-primary btn-sm" style="width: 100%;" onclick="showToast('এসএমএস গেটওয়ে রেডি: ৭৪ জন অভিভাবকের মোবাইলে বার্তা প্রেরণ সফল!')">
+            বাল্ক SMS প্রেরণ করুন &rarr;
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Admin Collect Fee Modal -->
+  <div class="modal-overlay" id="adminCollectFeeModal" aria-hidden="true">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h4>ফি ও বেতন আদায় এন্ট্রি</h4>
+        <button class="modal-close" onclick="document.getElementById('adminCollectFeeModal').classList.remove('active')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="margin-bottom: 1rem;">
+          <label style="font-size:0.8rem; font-weight:700; color:#475569;">শিক্ষার্থীর রোল</label>
+          <input type="text" id="adminFeeRoll" readonly style="width:100%; padding:0.6rem; border:1px solid var(--border-color); background:#f8fafc; font-weight:700;">
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label style="font-size:0.8rem; font-weight:700; color:#475569;">শিক্ষার্থীর নাম</label>
+          <input type="text" id="adminFeeName" readonly style="width:100%; padding:0.6rem; border:1px solid var(--border-color); background:#f8fafc; font-weight:700;">
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label style="font-size:0.8rem; font-weight:700; color:#475569;">আদায়ের পরিমাণ (টাকা)</label>
+          <input type="text" id="adminFeeAmount" value="৳ ২,৫০০" style="width:100%; padding:0.6rem; border:1px solid var(--border-color); font-weight:800; color:#0a1f44; font-size:1.1rem;">
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label style="font-size:0.8rem; font-weight:700; color:#475569;">পেমেন্ট প্রাপ্তির মাধ্যম</label>
+          <select class="select-filter" id="adminPaymentMedium" style="width:100%;">
+            <option value="নগদ কাউন্টার">নগদ কাউন্টার (ক্যাশ আদায়)</option>
+            <option value="বিকাশ মার্চেন্ট">বিকাশ মার্চেন্ট অ্যাকাউন্ট</option>
+            <option value="নগদ">নগদ অ্যাকাউন্ট</option>
+            <option value="ব্যাংক জমা">ব্যাংক একাউন্ট ডিপোজিট</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" onclick="document.getElementById('adminCollectFeeModal').classList.remove('active')">বাতিল</button>
+        <button class="btn btn-success btn-sm" onclick="handleAdminCollectConfirm()">আদায় নিশ্চিত করুন &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Student Admission Entry Modal -->
+  <div class="modal-overlay" id="newStudentModal" aria-hidden="true">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h4>নতুন শিক্ষার্থী ভর্তি / তথ্য এন্ট্রি</h4>
+        <button class="modal-close" id="closeNewStudentModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="newStudentForm" onsubmit="event.preventDefault(); submitNewStudent();">
+          <div style="margin-bottom: 0.85rem;">
+            <label style="font-size:0.8rem; font-weight:700; color:#475569;">শিক্ষার্থীর সম্পূর্ণ নাম</label>
+            <input type="text" id="newStuName" required placeholder="যেমন: আবরার আহমেদ" style="width:100%; padding:0.6rem; border:1px solid var(--border-color); border-radius:var(--radius-sm);">
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem; margin-bottom: 0.85rem;">
+            <div>
+              <label style="font-size:0.8rem; font-weight:700; color:#475569;">ক্লাস রোল</label>
+              <input type="text" id="newStuRoll" required placeholder="যেমন: ২৬৩৬" style="width:100%; padding:0.6rem; border:1px solid var(--border-color); border-radius:var(--radius-sm);">
+            </div>
+            <div>
+              <label style="font-size:0.8rem; font-weight:700; color:#475569;">সেশন</label>
+              <input type="text" id="newStuSession" value="২০২৬" style="width:100%; padding:0.6rem; border:1px solid var(--border-color); border-radius:var(--radius-sm);">
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem; margin-bottom: 0.85rem;">
+            <div>
+              <label style="font-size:0.8rem; font-weight:700; color:#475569;">কোর্স / ট্রেড</label>
+              <select class="select-filter" id="newStuDept" style="width:100%;">
+                <option value="SSC-VOC">এসএসসি (ভোকেশনাল)</option>
+                <option value="HSC-BM">এইচএসসি (বিএম)</option>
+                <option value="DIPLOMA">ডিপ্লোমা ইন ইঞ্জিনিয়ারিং</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:0.8rem; font-weight:700; color:#475569;">রক্তের গ্রুপ</label>
+              <select class="select-filter" id="newStuBlood" style="width:100%;">
+                <option>A+</option>
+                <option>B+</option>
+                <option>O+</option>
+                <option>AB+</option>
+                <option>A-</option>
+                <option>B-</option>
+                <option>O-</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <label style="font-size:0.8rem; font-weight:700; color:#475569;">অভিভাবকের মোবাইল নম্বর</label>
+            <input type="tel" id="newStuPhone" required placeholder="01XXXXXXXXX" style="width:100%; padding:0.6rem; border:1px solid var(--border-color); border-radius:var(--radius-sm);">
+          </div>
+
+          <div class="modal-footer" style="padding:0; background:none; border:none; margin-top:1.5rem;">
+            <button type="button" class="btn btn-secondary btn-sm" id="cancelNewStudentModal">বাতিল</button>
+            <button type="submit" class="btn btn-primary btn-sm">তথ্য সংরক্ষণ করুন</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Receipt Modal -->
+  <div class="modal-overlay" id="receiptModal" aria-hidden="true">
+    <div class="modal-container printable-receipt" style="max-width: 480px;">
+      <div class="modal-header" style="background:#0a1f44; color:#fff;">
+        <h4 style="color:#fff;">অফিসিয়াল ডিজিটাল মানি রিসিট</h4>
+        <button class="modal-close" id="closeReceiptModal" style="color:#fff;">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 2rem;">
+        <div style="text-align: center; border-bottom: 2px dashed #cbd5e1; padding-bottom: 1.25rem; margin-bottom: 1.25rem;">
+          <img src="assets/images/umc_logo.svg" alt="UMC" style="width: 45px; height: 50px; margin: 0 auto 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-weight: 800; color: #0a1f44;">UTTARA MANAGEMENT COLLEGE</h3>
+          <p style="font-size: 0.75rem; color: #64748b;">House-14, Road #08, Sector #06, Uttara, Dhaka-1230</p>
+          <span class="badge-pill" style="background:#ecfdf5; color:#10b981; font-weight:800; margin-top: 0.5rem;">ফি আদায়ের স্বীকৃতিপত্র</span>
+        </div>
+
+        <table style="width:100%; font-size: 0.85rem; border-collapse: collapse; margin-bottom: 1.25rem;">
+          <tr>
+            <td style="padding: 4px 0; color:#64748b;">ভাউচার আইডি:</td>
+            <td style="padding: 4px 0; font-weight:700; text-align:right;" id="receiptTrxId">TRX-ADM-2630</td>
+          </tr>
+          <tr>
+            <td style="padding: 4px 0; color:#64748b;">তারিখ:</td>
+            <td style="padding: 4px 0; font-weight:700; text-align:right;" id="receiptDate">২ নভেম্বর ২০২৬</td>
+          </tr>
+          <tr>
+            <td style="padding: 4px 0; color:#64748b;">ফি বাবদ:</td>
+            <td style="padding: 4px 0; font-weight:700; text-align:right;" id="receiptFeeType">টিউশন ফি আদায়</td>
+          </tr>
+          <tr style="border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 8px 0; font-size: 1rem; font-weight:800; color: #0a1f44;">আদায়কৃত মোট টাকা:</td>
+            <td style="padding: 8px 0; font-size: 1.2rem; font-weight:800; color: #10b981; text-align:right;" id="receiptAmount">৳ ২,৫০০</td>
+          </tr>
+        </table>
+
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-top: 1.5rem;">
+          <div style="text-align: center;">
+            <div style="width:50px; height:50px; background:#f1f5f9; border: 1px solid #cbd5e1; display:flex; align-items:center; justify-content:center; font-size: 0.65rem; color:#64748b;">
+              [SEAL]
+            </div>
+            <span style="font-size:0.65rem; color:#64748b;">সেন্ট্রাল ক্যাশ ডিপার্টমেন্ট</span>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.75rem; font-weight:700; color: #0a1f44; border-top: 1px solid #0f172a; padding-top: 4px; display:inline-block;">
+              অনুমোদিত স্বাক্ষর
+            </div>
+            <div style="font-size:0.65rem; color:#64748b;">উত্তরা ম্যানেজমেন্ট কলেজ</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-sm" id="btnPrintReceipt">
+          রসিদ প্রিন্ট করুন
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // New Student Admission Modal Handling
+    const newStuModal = document.getElementById('newStudentModal');
+    const openNewBtn = document.getElementById('btnOpenNewStudentModal');
+    const closeNewBtn = document.getElementById('closeNewStudentModal');
+    const cancelNewBtn = document.getElementById('cancelNewStudentModal');
+
+    if (openNewBtn && newStuModal) {
+      openNewBtn.addEventListener('click', () => newStuModal.classList.add('active'));
+    }
+    const closeNModal = () => newStuModal && newStuModal.classList.remove('active');
+    if (closeNewBtn) closeNewBtn.addEventListener('click', closeNModal);
+    if (cancelNewBtn) cancelNewBtn.addEventListener('click', closeNModal);
+
+    function handleAdminCollectConfirm() {
+      const roll = document.getElementById('adminFeeRoll').value;
+      const amount = document.getElementById('adminFeeAmount').value;
+      document.getElementById('adminCollectFeeModal').classList.remove('active');
+      applyAdminFeeCollection(roll, amount);
+    }
+
+    function submitNewStudent() {
+      const name = document.getElementById('newStuName').value;
+      const roll = document.getElementById('newStuRoll').value;
+      const dept = document.getElementById('newStuDept').value;
+      const blood = document.getElementById('newStuBlood').value;
+      const phone = document.getElementById('newStuPhone').value;
+      const session = document.getElementById('newStuSession').value;
+
+      const tableBody = document.getElementById('adminStudentTableBody');
+      const tr = document.createElement('tr');
+      tr.setAttribute('data-roll', roll);
+      tr.setAttribute('data-name', name);
+      tr.setAttribute('data-phone', phone);
+      tr.setAttribute('data-dept', dept);
+      tr.setAttribute('data-status', 'due');
+      tr.style.background = '#f0fdf4';
+
+      tr.innerHTML = `
+        <td data-label="রোল"><span class="badge-pill" style="background:#eff6ff; color:#1d4ed8; font-weight:800;">${roll}</span></td>
+        <td data-label="শিক্ষার্থীর নাম">
+          <strong>${name}</strong>
+          <div style="font-size:0.75rem; color:#dc2626; font-weight:700;">রক্তের গ্রুপ: ${blood}</div>
+        </td>
+        <td data-label="কোর্স / ট্রেড"><span class="badge-pill" style="background:#f1f5f9; color:#0f172a;">${dept}</span></td>
+        <td data-label="সেশন">${session}</td>
+        <td data-label="মোবাইল"><span style="font-family:monospace; font-weight:600;">${phone}</span></td>
+        <td data-label="বকেয়া অংক" class="due-amount-col"><strong style="color:#ef4444;">৳ ২,৫০০</strong></td>
+        <td data-label="স্ট্যাটাস" class="status-col"><span class="status-badge status-due">বকেয়া (Due)</span></td>
+        <td data-label="অ্যাকশন" class="action-col" style="text-align: right;">
+          <button class="btn btn-sm btn-success" onclick="collectFeeAdmin('${roll}', '${name}', '৳ ২,৫০০')">বেতন গ্রহণ</button>
+          <button class="btn btn-sm btn-secondary" onclick="sendSmsReminder('${roll}', '${name}', '${phone}')">SMS পাঠান</button>
+        </td>
+      `;
+
+      tableBody.insertBefore(tr, tableBody.firstChild);
+      closeNModal();
+      document.getElementById('newStudentForm').reset();
+      showToast(`শিক্ষার্থী ${name} (রোল: ${roll})-এর সফলভাবে ডিজিটাল ভর্তি এন্ট্রি সম্পন্ন হয়েছে!`);
+    }
+  </script>
+
+  <!-- Mobile Admin Bottom Tab Bar -->
+  <nav class="mobile-bottom-bar" aria-label="Admin Mobile Tabs">
+    <a href="#admin-overview" class="mobile-bottom-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      <span>ড্যাশবোর্ড</span>
+    </a>
+    <a href="#student-ledger-table" class="mobile-bottom-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+      <span>বেতন খাতা</span>
+    </a>
+    <a href="javascript:void(0)" class="mobile-bottom-item" onclick="document.getElementById('btnOpenNewStudentModal').click()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      <span>নতুন ভর্তি</span>
+    </a>
+    <a href="#sms-alerts" class="mobile-bottom-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      <span>নোটিশ SMS</span>
+    </a>
+  </nav>
+</body>
+</html>
