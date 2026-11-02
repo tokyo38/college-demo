@@ -39,11 +39,18 @@
 
 ---
 
+## 🌐 লাইভ ডেমো লিংক (Live Demo)
+- **মূল ওয়েবসাইট (Homepage):** [https://tokyo38.github.io/college-demo/](https://tokyo38.github.io/college-demo/)
+- **শিক্ষার্থী পোর্টাল (Student Portal):** [https://tokyo38.github.io/college-demo/student-portal.html](https://tokyo38.github.io/college-demo/student-portal.html)
+- **অ্যাডমিন ও বেতন খাতা (Admin ERP):** [https://tokyo38.github.io/college-demo/admin-portal.html](https://tokyo38.github.io/college-demo/admin-portal.html)
+
+---
+
 ## 💻 কীভাবে চালাবেন? (How to Run)
 কোনো সার্ভার বা ব্যাকএন্ড নির্ভরতা ছাড়াই প্রজেক্টটি সরাসরি যেকোনো ব্রাউজারে চলবে:
 1. রিপোজিটরিটি ক্লোন বা ডাউনলোড করুন:
    ```bash
-   git clone https://github.com/tokyo/college-demo.git
+   git clone https://github.com/tokyo38/college-demo.git
    ```
 2. ফোল্ডারের যেকোনো `.html` ফাইলে ডাবল-ক্লিক করে ব্রাউজারে ওপেন করুন।
    - হোমপেজ: `index.html`
